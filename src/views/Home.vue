@@ -1,18 +1,27 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home" class="mt-10">
+    <h2 class="text-2xl mb-2">Hi, {{ fullname }}!</h2>
+    <p>You've logged in using your username: {{ username }}</p>
+    <button-element class="mt-10">Logout</button-element>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { defineComponent, ref } from '@vue/composition-api';
+import ButtonElement from '../components/ButtonElement.vue';
 
-export default {
-  name: 'Home',
+export default defineComponent({
   components: {
-    HelloWorld
+    ButtonElement
+  },
+  setup() {
+    const fullname = ref('');
+    const username = ref('');
+
+    return {
+      fullname,
+      username
+    };
   }
-}
+});
 </script>
